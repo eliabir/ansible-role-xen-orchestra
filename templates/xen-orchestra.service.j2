@@ -1,0 +1,11 @@
+[Unit]
+Description=Xen Orchestra
+AssertPathExists=/opt/xo-server
+
+[Service]
+Type=simple
+ExecStart=
+Nice=5
+
+[Install]
+WantedBy=multi-user.target
