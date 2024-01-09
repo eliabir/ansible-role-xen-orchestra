@@ -4,7 +4,7 @@
 xen_orchestra_global: true
 
 # The repository to clone Xen Orchestra source code from
-xen_orchestra_repo: https://github.com/vatesfr/xen-orchestra
+xen_orchestra_repo: https://github.com/vatesfr/xen-orchestra.git
 
 # The branch or tag to clone the Xen Orchestra repo from
 xen_orchestra_version: master
