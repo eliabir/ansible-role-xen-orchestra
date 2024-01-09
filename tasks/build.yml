@@ -1,4 +1,4 @@
-- name: Create Xen Orchestra dir
+- name: Create Xen Orchestra directory
   become: true
   ansible.builtin.file:
     path: "{{ xen_orchestra_dir }}"
@@ -7,7 +7,7 @@
     group: "{{ xen_orchestra_svc_group }}"
     mode: "770"
 
-- name: Clone Xen Orchestra repo to tmp dest
+- name: Clone Xen Orchestra repo to temp destination
   become: true
   become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.git:
@@ -15,7 +15,7 @@
     dest: "{{ xen_orchestra_tmp_dir }}"
     version: "{{ xen_orchestra_version }}"
 
-- name: Copy cloned Xen Orchestra repo to main dir
+- name: Copy cloned Xen Orchestra repo to main directory
   become: true
   become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.copy:
@@ -25,6 +25,11 @@
     owner: "{{ xen_orchestra_svc_user }}"
     group: "{{ xen_orchestra_svc_group }}"
     
+- name: Remove temp git clone destination
+  become: true
+  ansible.builtin.file:
+    path: "{{ xen_orchestra_tmp_dir }}"
+    state: absent
 
 - name: Build project
   become: true
