@@ -15,7 +15,7 @@
     owner: "{{ xen_orchestra_svc_user }}"
     group: "{{ xen_orchestra_svc_group }}"
 
-- name: Copy config.toml to remote host
+- name: "Copy config.toml to {{ xen_orchestra_config_dir }}"
   become: true
   become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.template:
