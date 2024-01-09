@@ -5,8 +5,15 @@
 
 - name: Set config dir for global install
   ansible.builtin.set_fact:
-    xen_orchestra_home: "{{ xen_orchestra_home }}"
-  when: "'xen_orchestra_global' != true"
+    xen_orchestra_config_dir: "{{ xen_orchestra_home }}"
+  when: "'xen_orchestra_global' == true"
+
+- name: Ensure config dir is present
+  ansible.builtin.file:
+    path: "{{ xen_orchestra_config_dir }}"
+    state: directory
+    owner: "{{ xen_orchestra_svc_user }}"
+    group: "{{ xen_orchestra_svc_group }}"
 
 - name: Copy config.toml to remote host
   become: true
