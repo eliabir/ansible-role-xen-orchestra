@@ -17,7 +17,7 @@
   ansible.builtin.user:
     name: "{{ xen_orchestra_svc_user }}"
     group: "{{ xen_orchestra_svc_group }}"
-    shell: /bin/false
+    shell: /bin/bash
     home: "{{ xen_orchestra_dir }}"
     skeleton: false
     state: present
