@@ -1,3 +1,0 @@
-- name: Install yarn with npm
-  community.general.npm:
-    name: yarn

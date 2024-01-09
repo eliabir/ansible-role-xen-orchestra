@@ -1,4 +1,4 @@
-xo_prereqs:
+xen_orchestra_prereqs:
   - build-essential
   - redis-server
   - libpng-de
@@ -9,4 +9,3 @@ xo_prereqs:
   - cifs-utils
   - nfs-common
   - ntfs-3g
-

@@ -1,0 +1,43 @@
+- name: Create Xen Orchestra dir
+  become: true
+  become_user: "{{ xen_orchestra_user }}"
+  ansible.builtin.file:
+    path: "{{ xen_orchestra_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: "770"
+
+- name: Clone Xen Orchestra repo
+  become: true
+  become_user: "{{ xen_orchestra_user }}"
+  ansible.builtin.git:
+    repo: "{{ xen_orchestra_repo }}"
+    dest: "{{ xen_orchestra_dir }}"
+    version: "{{ xen_orchestra_version }}"
+
+- name: Build project
+  become: true
+  become_user: "{{ xen_orchestra_user }}"
+  ansible.builtin.command: "{{ item }}"
+  args:
+    chdir: "{{ xen_orchestra_tmp_dir }}"
+  register: output
+  changed_when: output.rc == 0
+  failed_when: output.rc != 0
+  loop:
+    - yarn
+    - yarn build
+
+- name: Include config tasks
+  ansible.builtin.include_tasks: config.yml
+
+- name: Start xo-server
+  become: true
+  become_user: "{{ xen_orchestra_user }}"
+  ansible.builtin.command: yarn start
+  args:
+    chdir: "{{ xen_orchestra_dir }}"
+  register: output
+  changed_when: output.rc == 0
+  failed_when: output.rc != 0

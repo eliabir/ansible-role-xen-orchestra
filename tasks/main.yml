@@ -1,2 +1,8 @@
-- name: Include Yarn installation task
-  ansible.builtin.include_tasks: yarn.yml
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: prereqs.yml
+
+- name: Include user and group creation tasks
+  ansible.builtin.include_tasks: user.yml
+
+- name: Include build tasks
+  ansible.builtin.include_tasks: build.yml

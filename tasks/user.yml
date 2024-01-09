@@ -1,0 +1,22 @@
+- name: Set Xen Orchestra user homedir for non-global install
+  ansible.builtin.set_fact:
+    xen_orchestra_home: /home/xo
+  when: "'xen_orchestra_global' != true"
+
+- name: Set Xen Orchestra user homedir for global install
+  ansible.builtin.set_fact:
+    xen_orchestra_home: "{{ xen_orchestra_dir }}"
+  when: "'xen_orchestra_global' == true"
+
+- name: Create Xen Orchestra group
+  ansible.builtin.group:
+    name: xen_orchestra_svc_group
+    state: present
+
+- name: Create Xen Orchestra group
+  ansible.builtin.user:
+    name: xen_orchestra_svc_user
+    group: xen_orchestra_svc_group
+    shell: /bin/false
+    home: "{{ xen_orchestra_dir }}"
+    state: present

@@ -1,0 +1,19 @@
+- name: Set config dir for non-global install
+  ansible.builtin.set_fact:
+    xen_orchestra_config_dir: "{{ xen_orchestra_home }}/.config/xo-server"
+  when: "'xen_orchestra_global' != true"
+
+- name: Set config dir for global install
+  ansible.builtin.set_fact:
+    xen_orchestra_home: "{{ xen_orchestra_home }}"
+  when: "'xen_orchestra_global' != true"
+
+- name: Copy config.toml to remote host
+  become: true
+  become_user: "{{ xen_orchestra_svc_user }}"
+  ansible.builtin.template:
+    src: config.toml.j2
+    dest: "{{ xen_orchestra_config_dir }}/config.toml"
+    owner: "{{ xen_orchestra_svc_user }}"
+    group: "{{ xen_orchestra_svc_group }}"
+    mode: "660"
