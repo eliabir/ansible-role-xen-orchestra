@@ -1,7 +1,7 @@
 xen_orchestra_prereqs:
   - build-essential
   - redis-server
-  - libpng-de
+  - libpng-dev
   - git
   - python3-minimal
   - libvhdi-utils
