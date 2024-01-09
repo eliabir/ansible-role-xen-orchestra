@@ -14,6 +14,7 @@
     repo: "{{ xen_orchestra_repo }}"
     dest: "{{ xen_orchestra_dir }}"
     version: "{{ xen_orchestra_version }}"
+    force: true
 
 - name: Build project
   become: true
