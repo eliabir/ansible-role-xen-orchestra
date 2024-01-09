@@ -19,4 +19,5 @@
     group: "{{ xen_orchestra_svc_group }}"
     shell: /bin/false
     home: "{{ xen_orchestra_dir }}"
+    skeleton: false
     state: present
