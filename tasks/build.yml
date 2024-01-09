@@ -1,11 +1,10 @@
 - name: Create Xen Orchestra dir
   become: true
-  become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.file:
     path: "{{ xen_orchestra_dir }}"
     state: directory
-    owner: root
-    group: root
+    owner: "{{ xen_orchestra_svc_user }}"
+    group: "{{ xen_orchestra_svc_group }}"
     mode: "770"
 
 - name: Clone Xen Orchestra repo
