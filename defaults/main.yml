@@ -29,7 +29,7 @@ xen_orchestra_data_dir: /var/lib/xo-server/data
 
 # If set to true, all HTTP traffic will be redirected to the first HTTPs
 # configuration.
-xen_orchestra_https_redirect: true
+xen_orchestra_https_redirect: false
 
 # Public URL to connect to this XO
 xen_orchestra_publicurl: true
