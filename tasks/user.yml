@@ -13,11 +13,22 @@
     name: "{{ xen_orchestra_svc_group }}"
     state: present
 
-- name: Create Xen Orchestra group
+- name: Create Xen Orchestra user
   ansible.builtin.user:
     name: "{{ xen_orchestra_svc_user }}"
     group: "{{ xen_orchestra_svc_group }}"
     shell: /bin/bash
     home: "{{ xen_orchestra_dir }}"
     skeleton: false
+    state: present
+
+- name: Give required sudo permissions to Xen Orchestra user
+  community.general.sudoers:
+    name: xen-orchestra
+    user: "{{ xen_orchestra_svc_user }}"
+    nopassword: true
+    commands:
+      - /bin/mount
+      - /bin/umount
+      - /bin/findmnt
     state: present
