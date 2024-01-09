@@ -5,7 +5,7 @@
 
 - name: Set config dir for global install
   ansible.builtin.set_fact:
-    xen_orchestra_config_dir: "{{ xen_orchestra_dir }}"
+    xen_orchestra_config_dir: "{{ xen_orchestra_global_conf_dir }}"
   when: "xen_orchestra_global == true"
 
 - name: Ensure config dir is present

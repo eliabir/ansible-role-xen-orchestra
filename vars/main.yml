@@ -12,3 +12,4 @@ xen_orchestra_prereqs:
   - ntfs-3g
 
 xen_orchestra_tmp_dir: /tmp/xen-orchestra
+xen_orchestra_global_conf_dir: /etc/xo-server
