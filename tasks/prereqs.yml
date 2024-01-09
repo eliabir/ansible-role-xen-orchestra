@@ -7,7 +7,7 @@
 - name: Install prerequisite packages
   become: true
   ansible.builtin.apt:
-    name: "{{ xo_prereqs }}"
+    name: "{{ xen_orchestra_prereqs }}"
 
 - name: Ensure redis is running
   become: true
