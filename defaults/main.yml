@@ -1,8 +1,129 @@
-# geerlingguy.nodejs defaults
+### Main role defaults ###
+
+# Whether or not to install yarn globally with npm
+yarn_global: true
+
+# Whether or not to run Xen Orchestra as a global service
+xen_orchestra_global: true
+
+# The repository to clone Xen Orchestra source code from
+xen_orchestra_repo: https://github.com/vatesfr/xen-orchestra
+
+# The branch or tag to clone the Xen Orchestra repo from
+xen_orchestra_version: master
+
+# The directory to clone the Xen Orchestra source code to
+xen_orchestra_dir: /opt/xen-orchestra
+
+# Name of the user and group created to run Xen Orchestra
+xen_orchestra_svc_user: xo
+xen_orchestra_svc_group: "{{ xen_orchestra_svc_user }}"
+
+
+# HTTP proxy configuration used by xo-server to fetch resources on the Internet.
+xen_orchestra_httpproxy: undefined
+
+# List of host names (optionally with a port), separated by commas, for which
+# the proxy above will not be used.
+xen_orchestra_noproxy: undefined
+
+# Directory containing the database of XO.
+xen_orchestra_data_dir: /var/lib/xo-server/data
+
+# If set to true, all HTTP traffic will be redirected to the first HTTPs
+# configuration.
+xen_orchestra_https_redirect: true
+
+# Public URL to connect to this XO
+xen_orchestra_publicurl: true
+
+# Accepted values for this setting:
+# - false (default): do not use the headers
+# - true: always use the headers
+# - a list of trusted addresses: the headers will be used only if the connection
+#   is coming from one of these addresses
+xen_orchestra_use_forwarded_headers: true
+
+# Settings applied to cookies created by xo-server's embedded HTTP server.
+xen_orchestra_samesite: true
+xen_orchestra_secure: true
+
+# Address on which the server is listening on.
+xen_orchestra_hostname: 127.0.0.1
+
+# Port on which the server is listening on.
+xen_orchestra_port: 80
+
+# Instead of `host` and `port` a path to a UNIX socket may be specified
+# (overrides `host` and `port`).
+xen_orchestra_socket: undefined
+
+# Whether or not Xen Orchestra should use HTTPS
+xen_orchestra_https: false
+
+# Requires xen_orchestra_https to be true
+xen_orchestra_https_port: 443
+
+# Whether to autogenerate a self signed certificate if the `cert` or `key`
+# files could not be found.
+# Requires xen_orchestra_https to be true
+xen_orchestra_autocert: true
+
+# File containing the certificate (PEM format).
+xen_orchestra_cert: undefined
+
+# File containing the private key (PEM format).
+xen_orchestra_key: undefined
+
+# List of files/directories which will be served.
+# Entered as a dictionary of the format:
+# xen_orchestra_http_mounts:
+#   '/an/url': /path/to/directory
+#   '/another/url': '/path/to/another/directory'
+xen_orchestra_http_mounts: {}
+
+# List of proxied URLs (HTTP & WebSockets).
+# Entered as a dictionary of the format:
+# xen_orchestra_http_proxies:
+#   '/an/url': 'http://localhost:1234'
+#   '/another/url': 'http://localhost:5678'
+xen_orchestra_http_proxies: {}
+
+# Whether or not Xen Orchestra export logs to an external syslog
+xen_orchestra_external_syslog: false
+
+# External syslog target to export logs to
+# Requires xen_orchestra_external_syslog to be true
+xen_orchestra_syslog_target: undefined
+
+# Unix socket for Redis
+xen_orchestra_redis_socket: undefined
+
+# Redis server URI
+# Syntax: redis://[db[:password]@]hostname[:port][/db-number]
+xen_orchestra_redis_uri: redis://localhost:6379/0
+
+# List of aliased commands for Redis
+# See http://redis.io/topics/security#disabling-of-specific-commands
+#
+# Entered as a dictionary of the format:
+# xen_orchestra_redis_aliased_commands:
+#   srem: '3fd758c9-5610-4e9d-a058-dbf4cb6d8bf0'
+#   del: '3dda29ad-3015-44f9-b13b-fa570de92489'
+xen_orchestra_redis_aliased_commands: undefined
+
+# Directory used to mount remotes
+xen_orchestra_remote_mounts_dir: /run/xo-server/mounts
+
+# Use sudo for mount with non-root user
+xen_orchestra_usesudo: false
+
+
+### geerlingguy.nodejs defaults ###
 
 # Set the version of Node.js to install ("12.x", "13.x", "14.x", "15.x", etc.).
 # Version numbers from Nodesource: https://github.com/nodesource/distributions
-nodejs_version: "16.x"
+nodejs_version: "18.x"
 
 # The user for whom the npm packages will be installed.
 # nodejs_install_npm_user: username
@@ -32,7 +153,3 @@ nodejs_package_json_path: ""
 nodejs_generate_etc_profile: "true"
 
 
-# Main role defaults
-
-# Whether or not to install yarn globally with npm
-yarn_global: true
