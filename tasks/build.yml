@@ -8,8 +8,6 @@
     mode: "770"
 
 - name: Clone Xen Orchestra repo
-  become: true
-  become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.git:
     repo: "{{ xen_orchestra_repo }}"
     dest: "{{ xen_orchestra_dir }}"
