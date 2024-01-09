@@ -1,4 +1,5 @@
 xen_orchestra_prereqs:
+  - acl
   - build-essential
   - redis-server
   - libpng-dev
