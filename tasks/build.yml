@@ -7,14 +7,24 @@
     group: "{{ xen_orchestra_svc_group }}"
     mode: "770"
 
-- name: Clone Xen Orchestra repo
+- name: Clone Xen Orchestra repo to tmp dest
   become: true
   become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.git:
     repo: "{{ xen_orchestra_repo }}"
-    dest: "{{ xen_orchestra_dir }}"
+    dest: "{{ xen_orchestra_tmp_dir }}"
     version: "{{ xen_orchestra_version }}"
-    force: true
+
+- name: Copy cloned Xen Orchestra repo to main dir
+  become: true
+  become_user: "{{ xen_orchestra_svc_user }}"
+  ansible.builtin.copy:
+    src: "{{ xen_orchestra_tmp_dir }}"
+    dest: "{{ xen_orchestra_dir }}"
+    remote_src: true
+    owner: "{{ xen_orchestra_svc_user }}"
+    group: "{{ xen_orchestra_svc_group }}"
+    
 
 - name: Build project
   become: true

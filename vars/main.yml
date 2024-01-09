@@ -10,3 +10,5 @@ xen_orchestra_prereqs:
   - cifs-utils
   - nfs-common
   - ntfs-3g
+
+xen_orchestra_tmp_dir: /tmp/xen-orchestra
