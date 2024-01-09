@@ -1,63 +1,63 @@
 {% if xen_orchestra_httpproxy != 'undefined' %}
 # HTTP proxy configuration used by xo-server to fetch resources on the Internet.
-httpProxy = {{ xen_orchestra_httpproxy }}
+httpProxy = '{{ xen_orchestra_httpproxy }}'
 {% endif %}
 
 {% if xen_orchestra_noproxy != 'undefined' %}
 # List of host names (optionally with a port), separated by commas, for which
 # the proxy above will not be used.
-noProxy = {{ xen_orchestra_noproxy }}
+noProxy = '{{ xen_orchestra_noproxy }}'
 {% endif %}
 
 # User to run XO-Server as.
-user = '{{ xen_orchestra_svc_user }}'
+user = ''{{ xen_orchestra_svc_user }}''
 
 # Group to run XO-Server as.
-group = '{{ xen_orchestra_svc_group }}'
+group = ''{{ xen_orchestra_svc_group }}''
 
 # Directory containing the database of XO.
-datadir = {{ xen_orchestra_data_dir }}
+datadir = '{{ xen_orchestra_data_dir }}'
 
 # Configuration of the embedded HTTP server.
 [http]
 # If set to true, all HTTP traffic will be redirected to the first HTTPs
 # configuration.
-redirectToHttps = {{ xen_orchestra_https_redirect }}
+redirectToHttps = '{{ xen_orchestra_https_redirect }}'
 
 {% if xen_orchestra_publicurl != 'undefined' %}
 # Public URL to connect to this XO
 publicUrl = 'https://xoa.company.lan'
 {% endif %}
 
-useForwardedHeaders = {{ xen_orchestra_use_forwarded_headers }}
+useForwardedHeaders = '{{ xen_orchestra_use_forwarded_headers }}'
 
 # Settings applied to cookies created by xo-server's embedded HTTP server.
 [http.cookies]
-sameSite = {{ xen_orchestra_samesite }}
-secure = {{ xen_orchestra_secure }}
+sameSite = '{{ xen_orchestra_samesite }}'
+secure = '{{ xen_orchestra_secure }}'
 
 # Basic HTTP.
 [[http.listen]]
 # Address on which the server is listening on.
-hostname = {{ xen_orchestra_hostname }}
+hostname = '{{ xen_orchestra_hostname }}'
 
 # Port on which the server is listening on.
-port = {{ xen_orchestra_port }}
+port = '{{ xen_orchestra_port }}'
 
 {% if xen_orchestra_socket != 'undefined' %}
 # Instead of `host` and `port` a path to a UNIX socket may be specified
 # (overrides `host` and `port`).
-socket = {{ xen_orchestra_socket }}
+socket = '{{ xen_orchestra_socket }}'
 {% endif %}
 
 {% if xen_orchestra_https %}
 # Basic HTTPS.
 [[http.listen]]
-hostname = {{ xen_orchestra_hostname }}
-port = {{ xen_orchestra_https_port }}
+hostname = '{{ xen_orchestra_hostname }}'
+port = '{{ xen_orchestra_https_port }}'
 
 # Whether to autogenerate a self signed certificate if the `cert` or `key`
-autoCert = {{ xen_orchestra_autocert }}
+autoCert = '{{ xen_orchestra_autocert }}'
 
 {% if xen_orchestra_cert != 'undefined' %}
 # File containing the certificate (PEM format).
@@ -74,7 +74,7 @@ key = './key.pem'
 [http.mounts]
 {% if xen_orchestra_http_mounts != {} %}
 {% for url, path in xen_orchestra_http_mounts.items() %}
-  {{ url }} = {{ path }}
+  '{{ url }}' = '{{ path }}'
 {% endfor %}
 {% endif %}
 
@@ -82,13 +82,13 @@ key = './key.pem'
 [http.proxies]
 {% if xen_orchestra_http_proxies != {} %}
 {% for url, proxied_url in xen_orchestra_http_proxies.items() %}
-{{ url }} = {{ proxied_url }}
+'{{ url }}' = '{{ proxied_url }}'
 {% endfor %}
 {% endif %}
 
 {% if xen_orchestra_external_syslog %}
 [logs.transport.syslog]
-target = {{ xen_orchestra_syslog_target }}
+target = '{{ xen_orchestra_syslog_target }}'
 {% endif %}
 
 # Connection to the Redis server.
@@ -97,13 +97,13 @@ target = {{ xen_orchestra_syslog_target }}
 socket = '/var/run/redis/redis.sock'
 {% endif %}
 
-uri = {{ xen_orchestra_redis_uri }}
+uri = '{{ xen_orchestra_redis_uri }}'
 
 {% if xen_orchestra_redis_aliased_commands != 'undefined' %}
 # List of aliased commands.
 renameCommands:
 {% for cmd, aliased_cmd in xen_orchestra_redis_aliased_commands.items() %}
-  {{ cmd }} = {{ aliased_cmd }}
+  '{{ cmd }}' = '{{ aliased_cmd }}'
 {% endfor %}
 {% endif %}
 
@@ -112,10 +112,10 @@ renameCommands:
 # Configuration for remotes
 [remoteOptions]
 # Directory used to mount remotes
-mountsDir = {{ xen_orchestra_remote_mounts_dir }}
+mountsDir = '{{ xen_orchestra_remote_mounts_dir }}'
 
 # Use sudo for mount with non-root user
-useSudo = {{ xen_orchestra_usesudo }}
+useSudo = '{{ xen_orchestra_usesudo }}'
 
 #=====================================================================
 
