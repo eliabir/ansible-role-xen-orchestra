@@ -49,7 +49,7 @@
 
 - name: Start xo-server
   become: true
-  become_user: "{{ xen_orchestra_svc_user }}"
+  # become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.command: yarn start
   args:
     chdir: "{{ xen_orchestra_dir }}/packages/xo-server"
