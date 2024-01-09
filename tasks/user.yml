@@ -10,13 +10,13 @@
 
 - name: Create Xen Orchestra group
   ansible.builtin.group:
-    name: xen_orchestra_svc_group
+    name: "{{ xen_orchestra_svc_group }}"
     state: present
 
 - name: Create Xen Orchestra group
   ansible.builtin.user:
-    name: xen_orchestra_svc_user
-    group: xen_orchestra_svc_group
+    name: "{{ xen_orchestra_svc_user }}"
+    group: "{{ xen_orchestra_svc_group }}"
     shell: /bin/false
     home: "{{ xen_orchestra_dir }}"
     state: present
