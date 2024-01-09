@@ -2,6 +2,7 @@
   become: true
   community.general.npm:
     name: yarn
+    global: true
 
 - name: Install prerequisite packages
   become: true

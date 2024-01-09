@@ -1,8 +1,5 @@
 ### Main role defaults ###
 
-# Whether or not to install yarn globally with npm
-yarn_global: true
-
 # Whether or not to run Xen Orchestra as a global service
 xen_orchestra_global: true
 
