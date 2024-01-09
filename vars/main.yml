@@ -1,0 +1,12 @@
+xo_prereqs:
+  - build-essential
+  - redis-server
+  - libpng-de
+  - git
+  - python3-minimal
+  - libvhdi-utils
+  - lvm2
+  - cifs-utils
+  - nfs-common
+  - ntfs-3g
+

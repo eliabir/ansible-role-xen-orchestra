@@ -1,0 +1,18 @@
+---
+dependencies:
+  - role: geerlingguy.nodejs
+    vars:
+      nodejs_version: "{{ nodejs_version }}"
+      npm_config_prefix: "{{ npm_config_prefix }}"
+      npm_config_unsafe_perm: "{{ npm_config_unsafe_perm }}"
+      nodejs_npm_global_packages: "{{ nodejs_npm_global_packages }}"
+      nodejs_package_json_path: "{{ nodejs_package_json_path }}"
+      nodejs_generate_etc_profile: "{{ nodejs_generate_etc_profile }}"
+
+galaxy_info:
+  role_name: xen_orchestra
+  author: eliabir
+  description: Installs Xen Orchestra
+  min_ansible_version: 2.x
+  license: none
+
