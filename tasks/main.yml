@@ -9,3 +9,6 @@
 
 - name: Include build tasks
   ansible.builtin.include_tasks: build.yml
+
+- name: Include service tasks
+  ansible.builtin.include_tasks: service.yml
