@@ -65,5 +65,3 @@
   register: output
   changed_when: output.rc == 0
   failed_when: output.rc != 0
-  # environment:
-  #   HOME: "{{ xen_orchestra_dir }}"
