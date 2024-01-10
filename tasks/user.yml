@@ -9,11 +9,13 @@
   when: "'xen_orchestra_global' == true"
 
 - name: Create Xen Orchestra group
+  become: true
   ansible.builtin.group:
     name: "{{ xen_orchestra_svc_group }}"
     state: present
 
 - name: Create Xen Orchestra user
+  become: true
   ansible.builtin.user:
     name: "{{ xen_orchestra_svc_user }}"
     group: "{{ xen_orchestra_svc_group }}"
@@ -23,6 +25,7 @@
     state: present
 
 - name: Give required sudo permissions to Xen Orchestra user
+  become: true
   community.general.sudoers:
     name: xen-orchestra
     user: "{{ xen_orchestra_svc_user }}"
