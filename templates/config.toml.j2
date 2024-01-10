@@ -22,19 +22,19 @@ datadir = '{{ xen_orchestra_data_dir }}'
 [http]
 # If set to true, all HTTP traffic will be redirected to the first HTTPs
 # configuration.
-redirectToHttps = '{{ xen_orchestra_https_redirect }}'
+redirectToHttps = {{ xen_orchestra_https_redirect | lower }}
 
 {% if xen_orchestra_publicurl != 'undefined' %}
 # Public URL to connect to this XO
-publicUrl = 'https://xoa.company.lan'
+publicUrl = {{ xen_orchestra_publicurl }}
 {% endif %}
 
-useForwardedHeaders = '{{ xen_orchestra_use_forwarded_headers }}'
+useForwardedHeaders = {{ xen_orchestra_use_forwarded_headers | lower }}
 
 # Settings applied to cookies created by xo-server's embedded HTTP server.
 [http.cookies]
-sameSite = '{{ xen_orchestra_samesite }}'
-secure = '{{ xen_orchestra_secure }}'
+sameSite = {{ xen_orchestra_samesite | lower }}
+secure = {{ xen_orchestra_secure | lower }}
 
 # Basic HTTP.
 [[http.listen]]
@@ -57,7 +57,7 @@ hostname = '{{ xen_orchestra_hostname }}'
 port = '{{ xen_orchestra_https_port }}'
 
 # Whether to autogenerate a self signed certificate if the `cert` or `key`
-autoCert = '{{ xen_orchestra_autocert }}'
+autoCert = {{ xen_orchestra_autocert | lower }}
 
 {% if xen_orchestra_cert != 'undefined' %}
 # File containing the certificate (PEM format).
@@ -115,7 +115,7 @@ renameCommands:
 mountsDir = '{{ xen_orchestra_remote_mounts_dir }}'
 
 # Use sudo for mount with non-root user
-useSudo = '{{ xen_orchestra_usesudo }}'
+useSudo = {{ xen_orchestra_usesudo | lower }}
 
 #=====================================================================
 

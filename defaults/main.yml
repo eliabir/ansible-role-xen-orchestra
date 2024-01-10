@@ -32,7 +32,7 @@ xen_orchestra_data_dir: /var/lib/xo-server/data
 xen_orchestra_https_redirect: false
 
 # Public URL to connect to this XO
-xen_orchestra_publicurl: true
+xen_orchestra_publicurl: undefined
 
 # Accepted values for this setting:
 # - false (default): do not use the headers
