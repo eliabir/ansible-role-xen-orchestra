@@ -9,11 +9,16 @@ httpProxy = '{{ xen_orchestra_httpproxy }}'
 noProxy = '{{ xen_orchestra_noproxy }}'
 {% endif %}
 
+
+{% if xen_orchestra_svc_user != 'undefined' %}
 # User to run XO-Server as.
 user = '{{ xen_orchestra_svc_user }}'
+{% endif %}
 
+{% if xen_orchestra_svc_group != 'undefined' %}
 # Group to run XO-Server as.
 group = '{{ xen_orchestra_svc_group }}'
+{% endif %}
 
 # Directory containing the database of XO.
 datadir = '{{ xen_orchestra_data_dir }}'
