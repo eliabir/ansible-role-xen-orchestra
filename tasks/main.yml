@@ -3,6 +3,9 @@
 
 - name: Include user and group creation tasks
   ansible.builtin.include_tasks: user.yml
+  when: 
+   - "xen_orchestra_svc_user != 'root'"
+   - "xen_orchestra_svc_group != 'root'"
 
 - name: Include build tasks
   ansible.builtin.include_tasks: build.yml
