@@ -26,6 +26,7 @@
   community.general.sudoers:
     name: xen-orchestra
     user: "{{ xen_orchestra_svc_user }}"
+    runas: root
     nopassword: true
     commands:
       - /bin/mount
