@@ -43,7 +43,7 @@ xen_orchestra_samesite: true
 xen_orchestra_secure: true
 
 # Address on which the server is listening on.
-xen_orchestra_hostname: 127.0.0.1
+xen_orchestra_hostname: '*'
 
 # Port on which the server is listening on.
 # Setting this below 1024 requires xen_orchestra_svc_user and xen_orchestra_svc_group to be root
