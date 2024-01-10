@@ -11,7 +11,7 @@ xen_orchestra_version: master
 xen_orchestra_dir: /opt/xen-orchestra
 
 # Name of the user and group created to run Xen Orchestra
-xen_orchestra_svc_user: xo
+xen_orchestra_svc_user: root
 xen_orchestra_svc_group: "{{ xen_orchestra_svc_user }}"
 
 # HTTP proxy configuration used by xo-server to fetch resources on the Internet.
