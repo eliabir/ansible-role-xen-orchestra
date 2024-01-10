@@ -56,12 +56,12 @@
     group: "{{ xen_orchestra_svc_group }}"
     mode: "700"
 
-- name: Start xo-server
-  become: true
-  become_user: "{{ xen_orchestra_svc_user }}"
-  ansible.builtin.command: yarn start
-  args:
-    chdir: "{{ xen_orchestra_dir }}/packages/xo-server"
-  register: output
-  changed_when: output.rc == 0
-  failed_when: output.rc != 0
+# - name: Start xo-server
+#   become: true
+#   become_user: "{{ xen_orchestra_svc_user }}"
+#   ansible.builtin.command: yarn start
+#   args:
+#     chdir: "{{ xen_orchestra_dir }}/packages/xo-server"
+#   register: output
+#   changed_when: output.rc == 0
+#   failed_when: output.rc != 0

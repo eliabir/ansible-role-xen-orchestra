@@ -1,11 +1,18 @@
 [Unit]
 Description=Xen Orchestra
-AssertPathExists=/opt/xo-server
+AssertPathExists={{ xen_orchestra_dir }}
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=
-Nice=5
+Restart=always
+KillMode=mixed
+KillSignal=SIGINT
+User={{ xen_orchestra_svc_user }}
+Group={{ xen_orchestra_svc_group }}
+WorkingDirectory={{ xen_orchestra_dir }}/packages/xo-server
+ExecStart=yarn start
 
 [Install]
 WantedBy=multi-user.target
