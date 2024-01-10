@@ -1,5 +1,3 @@
-### Main role defaults ###
-
 # Whether or not to run Xen Orchestra as a global service
 xen_orchestra_global: true
 
@@ -15,7 +13,6 @@ xen_orchestra_dir: /opt/xen-orchestra
 # Name of the user and group created to run Xen Orchestra
 xen_orchestra_svc_user: xo
 xen_orchestra_svc_group: "{{ xen_orchestra_svc_user }}"
-
 
 # HTTP proxy configuration used by xo-server to fetch resources on the Internet.
 xen_orchestra_httpproxy: undefined
@@ -49,7 +46,8 @@ xen_orchestra_secure: true
 xen_orchestra_hostname: 127.0.0.1
 
 # Port on which the server is listening on.
-xen_orchestra_port: 80
+# Setting this below 1024 requires xen_orchestra_svc_user and xen_orchestra_svc_group to be root
+xen_orchestra_port: 8080
 
 # Instead of `host` and `port` a path to a UNIX socket may be specified
 # (overrides `host` and `port`).
@@ -59,7 +57,8 @@ xen_orchestra_socket: undefined
 xen_orchestra_https: false
 
 # Requires xen_orchestra_https to be true
-xen_orchestra_https_port: 443
+# Setting this below 1024 requires xen_orchestra_svc_user and xen_orchestra_svc_group to be root
+xen_orchestra_https_port: 8443
 
 # Whether to autogenerate a self signed certificate if the `cert` or `key`
 # files could not be found.
