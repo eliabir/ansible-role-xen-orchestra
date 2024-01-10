@@ -47,6 +47,15 @@
 - name: Include config tasks
   ansible.builtin.include_tasks: config.yml
 
+- name: Ensure database directory is present and has correct permissions
+  become: true
+  ansible.builtin.file:
+    path: "{{ xen_orchestra_data_dir }}"
+    state: directory
+    owner: "{{ xen_orchestra_svc_user }}"
+    group: "{{ xen_orchestra_svc_group }}"
+    mode: "700"
+
 - name: Start xo-server
   become: true
   # become_user: "{{ xen_orchestra_svc_user }}"
