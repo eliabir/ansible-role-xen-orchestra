@@ -40,7 +40,8 @@ xen_orchestra_use_forwarded_headers: true
 
 # Settings applied to cookies created by xo-server's embedded HTTP server.
 xen_orchestra_samesite: true
-xen_orchestra_secure: true
+# This requires HTTPS to be configured
+xen_orchestra_secure: false
 
 # Address on which the server is listening on.
 xen_orchestra_hostname: 0.0.0.0
