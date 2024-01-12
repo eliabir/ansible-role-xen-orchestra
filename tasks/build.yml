@@ -9,7 +9,6 @@
 
 - name: Clone Xen Orchestra repo to temp destination
   become: true
-  become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.git:
     repo: "{{ xen_orchestra_repo }}"
     dest: "{{ xen_orchestra_tmp_dir }}"
@@ -17,7 +16,6 @@
 
 - name: Copy cloned Xen Orchestra repo to main directory
   become: true
-  become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.copy:
     src: "{{ xen_orchestra_tmp_dir }}/"
     dest: "{{ xen_orchestra_dir }}"

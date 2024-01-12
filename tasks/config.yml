@@ -9,6 +9,7 @@
   when: "xen_orchestra_global == true"
 
 - name: Ensure config dir is present
+  become: true
   ansible.builtin.file:
     path: "{{ xen_orchestra_config_dir }}"
     state: directory
@@ -17,7 +18,6 @@
 
 - name: "Copy config.toml to {{ xen_orchestra_config_dir }}"
   become: true
-  become_user: "{{ xen_orchestra_svc_user }}"
   ansible.builtin.template:
     src: config.toml.j2
     dest: "{{ xen_orchestra_config_dir }}/config.toml"
