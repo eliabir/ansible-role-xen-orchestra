@@ -10,6 +10,9 @@ xen_orchestra_version: master
 # The directory to clone the Xen Orchestra source code to
 xen_orchestra_dir: /opt/xen-orchestra
 
+# The name of the systemd service created for Xen Orchestra
+xen_orchestra_svc_name: xen-orchestra.service
+
 # Name of the user and group created to run Xen Orchestra
 xen_orchestra_svc_user: xo
 xen_orchestra_svc_group: "{{ xen_orchestra_svc_user }}"
