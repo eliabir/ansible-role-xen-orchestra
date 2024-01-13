@@ -1,0 +1,5 @@
+- name: Restart Xen Orchestra service
+  become: true
+  ansible.builtin.service:
+    name: "{{ xen_orchestra_svc_name }}"
+    state: restarted

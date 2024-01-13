@@ -24,3 +24,4 @@
     owner: "{{ xen_orchestra_svc_user }}"
     group: "{{ xen_orchestra_svc_group }}"
     mode: "660"
+  notify: Restart Xen Orchestra service
