@@ -1,5 +1,6 @@
 - name: Restart Xen Orchestra service
   become: true
-  ansible.builtin.service:
+  ansible.builtin.systemd_service:
     name: "{{ xen_orchestra_svc_name }}"
+    daemon_reload: true
     state: restarted
