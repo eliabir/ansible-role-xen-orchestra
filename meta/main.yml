@@ -9,5 +9,5 @@ galaxy_info:
   author: eliabir
   description: Installs Xen Orchestra
   min_ansible_version: 2.x
-  license: none
+  license: "license (BSD, MIT)"
 
